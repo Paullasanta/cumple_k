@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Feliz Cumpleaños Kath 🌻</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --amarillo:#f7d354; --dorado:#c89a10; --crema:#fffdf0;
+    --beige:#fdf3c0; --cafe:#b8860b; --texto:#3a2e00; --blanco:#fffef5;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--crema);color:var(--texto);font-family:'Lato',sans-serif;overflow-x:hidden;}
+
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    display:flex;justify-content:center;gap:1.4rem;flex-wrap:wrap;
+    padding:.65rem 1rem;
+    background:rgba(255,253,240,.9);backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(247,211,84,.35);
+    font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;
+  }
+  nav a{color:var(--cafe);text-decoration:none;transition:color .2s;}
+  nav a:hover{color:var(--dorado);}
+
+  .petals{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+  .petal{position:absolute;top:-60px;font-size:1.3rem;opacity:.45;animation:caer linear infinite;}
+  @keyframes caer{0%{transform:translateY(0) rotate(0deg) translateX(0);opacity:.45;}100%{transform:translateY(110vh) rotate(360deg) translateX(60px);opacity:0;}}
+
+  #hero{
+    position:relative;min-height:100vh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:5rem 2rem 3rem;
+    background:radial-gradient(ellipse at 20% 30%,#ffe98a 0%,transparent 55%),
+               radial-gradient(ellipse at 80% 70%,#fff3b0 0%,transparent 55%),var(--crema);
+  }
+  .hero-flor{font-size:4.5rem;animation:latido 2s ease-in-out infinite;}
+  @keyframes latido{0%,100%{transform:scale(1);}50%{transform:scale(1.13);}}
+  #hero h1{
+    font-family:'Dancing Script',cursive;
+    font-size:clamp(3.5rem,9vw,7rem);
+    color:var(--dorado);line-height:1.05;
+    text-shadow:3px 4px 14px rgba(200,154,16,.2);
+    animation:aparecer .9s ease both;
+  }
+  #hero h1 span{color:var(--cafe);}
+  .subtitulo{font-family:'Playfair Display',serif;font-style:italic;font-size:1.2rem;color:var(--cafe);margin-top:.7rem;animation:aparecer 1.2s ease both;}
+  .fecha{font-size:.82rem;letter-spacing:.22em;text-transform:uppercase;color:var(--dorado);margin-top:1rem;opacity:.75;animation:aparecer 1.5s ease both;}
+  @keyframes aparecer{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:none;}}
+  .scroll-hint{position:absolute;bottom:2rem;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dorado);opacity:.6;animation:rebotar 2s ease-in-out infinite;}
+  @keyframes rebotar{0%,100%{transform:translateY(0);}50%{transform:translateY(9px);}}
+
+  #zoro{
+    background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);
+    padding:3.5rem 1.5rem;text-align:center;position:relative;overflow:hidden;
+  }
+  #zoro::before{content:'⚔️';position:absolute;font-size:14rem;opacity:.04;top:50%;left:50%;transform:translate(-50%,-50%);}
+  #zoro .zoro-emoji{font-size:3.8rem;margin-bottom:.5rem;}
+  #zoro h2{font-family:'Dancing Script',cursive;font-size:clamp(1.8rem,4vw,3rem);color:#f7d354;margin:.4rem 0;}
+  #zoro p{font-family:'Playfair Display',serif;font-style:italic;color:#bbb;max-width:520px;margin:.6rem auto 0;font-size:.95rem;line-height:1.85;}
+
+  section{position:relative;z-index:1;padding:5rem 1.5rem;}
+  .section-title{font-family:'Dancing Script',cursive;font-size:clamp(2rem,5vw,3.2rem);color:var(--dorado);text-align:center;margin-bottom:2.8rem;}
+  .section-title span{color:var(--cafe);}
+  .divider{width:80px;height:2px;background:linear-gradient(90deg,transparent,var(--amarillo),transparent);margin:0 auto 2.5rem;}
+
+  #fotos{background:var(--beige);}
+  .galeria-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.2rem;max-width:1050px;margin:0 auto;}
+  .foto-card{
+    position:relative;border-radius:18px;overflow:hidden;
+    box-shadow:0 6px 24px rgba(200,154,16,.3);aspect-ratio:4/3;
+    background:linear-gradient(135deg,#fdf3c0,#fff9c4);
+    cursor:pointer;transition:transform .3s,box-shadow .3s;
+  }
+  .foto-card:hover{transform:scale(1.04) rotate(-1deg);box-shadow:0 14px 32px rgba(200,154,16,.45);}
+  .foto-card img{width:100%;height:100%;object-fit:cover;display:block;}
+  .foto-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;color:var(--dorado);font-size:.85rem;}
+  .foto-placeholder .icono{font-size:2.5rem;opacity:.6;}
+  .foto-caption{
+    position:absolute;bottom:0;left:0;right:0;padding:.7rem 1rem;
+    background:linear-gradient(transparent,rgba(58,46,0,.65));
+    color:#fff;font-size:.82rem;font-family:'Playfair Display',serif;
+    font-style:italic;transform:translateY(100%);transition:.3s;
+  }
+  .foto-card:hover .foto-caption{transform:translateY(0);}
+
+  #lightbox{display:none;position:fixed;inset:0;z-index:999;background:rgba(30,20,0,.88);backdrop-filter:blur(6px);align-items:center;justify-content:center;flex-direction:column;}
+  #lightbox.open{display:flex;}
+  #lightbox img{max-width:88vw;max-height:78vh;border-radius:16px;box-shadow:0 0 50px rgba(0,0,0,.5);}
+  #lightbox-close{position:absolute;top:1.5rem;right:2rem;font-size:2rem;color:#fff;cursor:pointer;background:none;border:none;}
+  #lightbox-caption{color:var(--amarillo);font-family:'Playfair Display',serif;font-style:italic;margin-top:.8rem;}
+
+  #musica{background:var(--crema);}
+  .musica-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1.2rem;max-width:1050px;margin:0 auto;}
+  .musica-card{
+    background:#fff;border-radius:20px;padding:1.3rem 1rem;
+    box-shadow:0 4px 18px rgba(200,154,16,.2);text-align:center;
+    transition:transform .3s,box-shadow .3s;border:1.5px solid rgba(247,211,84,.5);
+  }
+  .musica-card:hover{transform:translateY(-6px);box-shadow:0 12px 28px rgba(200,154,16,.35);}
+  .musica-card .nota{font-size:2.4rem;margin-bottom:.5rem;}
+  .musica-card h3{font-family:'Playfair Display',serif;font-size:.9rem;color:var(--texto);margin-bottom:.2rem;}
+  .musica-card p{font-size:.73rem;color:var(--dorado);letter-spacing:.03em;}
+  .musica-card a{
+    display:inline-block;margin-top:.8rem;padding:.38rem .9rem;border-radius:50px;
+    background:linear-gradient(135deg,var(--amarillo),var(--dorado));
+    color:var(--texto);text-decoration:none;font-size:.72rem;font-weight:700;
+    letter-spacing:.05em;transition:opacity .2s;
+  }
+  .musica-card a:hover{opacity:.8;}
+
+  #memes{background:var(--beige);}
+  .memes-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.4rem;max-width:1000px;margin:0 auto;}
+  .meme-card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 4px 18px rgba(200,154,16,.2);transition:transform .3s;}
+  .meme-card:hover{transform:scale(1.03) rotate(.5deg);}
+  .meme-inner{
+    padding:1.5rem;text-align:center;font-size:2.8rem;
+    background:linear-gradient(135deg,#fdf3c0,#fff9c4);
+    min-height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;
+  }
+  .meme-setup{font-size:.88rem;font-family:'Playfair Display',serif;font-style:italic;color:var(--cafe);}
+  .meme-texto{font-family:'Playfair Display',serif;font-style:italic;font-size:.88rem;color:var(--texto);padding:.8rem 1rem;line-height:1.55;border-top:1px solid rgba(247,211,84,.4);}
+  .meme-tag{font-size:.68rem;color:var(--dorado);letter-spacing:.08em;text-transform:uppercase;padding:.3rem 1rem .8rem;}
+
+  #videos{background:var(--crema);}
+  .videos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;max-width:1000px;margin:0 auto;}
+  .video-card{border-radius:18px;overflow:hidden;box-shadow:0 6px 22px rgba(200,154,16,.25);background:#fff;}
+  .video-card iframe{width:100%;aspect-ratio:16/9;display:block;border:none;}
+  .video-label{padding:.8rem 1.1rem;font-family:'Playfair Display',serif;font-style:italic;font-size:.9rem;color:var(--texto);border-top:1px solid rgba(247,211,84,.35);}
+  .video-personal{border-radius:18px;overflow:hidden;box-shadow:0 6px 22px rgba(200,154,16,.35);background:#fff;border:2px dashed var(--amarillo);}
+  .video-personal-inner{
+    aspect-ratio:16/9;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:.7rem;
+    background:linear-gradient(135deg,#fffdf0,#fdf3c0);
+    font-family:'Playfair Display',serif;font-style:italic;color:var(--cafe);padding:1.5rem;text-align:center;
+  }
+  .play-icon{font-size:3.5rem;}
+  .video-personal-inner p{font-size:1rem;line-height:1.6;}
+  .video-personal-inner small{font-size:.73rem;color:var(--dorado);}
+
+  #poemas{background:var(--beige);}
+  .poemas-wrapper{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.6rem;max-width:960px;margin:0 auto;}
+  .poema-card{
+    background:#fff;border-radius:22px;padding:2rem 1.8rem;
+    box-shadow:0 4px 20px rgba(200,154,16,.2);
+    border-top:4px solid var(--amarillo);position:relative;overflow:hidden;transition:transform .3s;
+  }
+  .poema-card::before{content:'"';position:absolute;top:-.4rem;left:.8rem;font-size:6rem;font-family:'Playfair Display',serif;color:var(--amarillo);opacity:.18;line-height:1;}
+  .poema-card:hover{transform:translateY(-5px);}
+  .poema-card p{font-family:'Playfair Display',serif;font-style:italic;line-height:1.9;font-size:.97rem;color:var(--texto);position:relative;z-index:1;}
+  .poema-card .firma{font-family:'Dancing Script',cursive;font-size:1.05rem;color:var(--dorado);margin-top:1.1rem;text-align:right;font-style:normal;}
+
+  #mensaje{text-align:center;background:linear-gradient(160deg,#ffe98a,#fff3b0,#fdf3c0);padding:6rem 2rem;}
+  #mensaje .gran-texto{font-family:'Dancing Script',cursive;font-size:clamp(2.5rem,7vw,5rem);color:var(--cafe);line-height:1.2;text-shadow:2px 3px 10px rgba(200,154,16,.2);}
+  #mensaje p{max-width:540px;margin:.8rem auto 0;font-family:'Playfair Display',serif;font-style:italic;font-size:1.1rem;color:var(--texto);opacity:.85;}
+  .confetti-btn{
+    display:inline-block;margin-top:2rem;padding:.9rem 2.4rem;border-radius:50px;
+    background:linear-gradient(135deg,var(--dorado),var(--cafe));
+    color:#fff;font-family:'Dancing Script',cursive;font-size:1.3rem;
+    border:none;cursor:pointer;box-shadow:0 6px 22px rgba(200,154,16,.4);
+    transition:transform .2s,box-shadow .2s;
+  }
+  .confetti-btn:hover{transform:scale(1.06);box-shadow:0 10px 30px rgba(200,154,16,.5);}
+  .confetti-piece{position:fixed;top:-20px;width:10px;height:10px;border-radius:2px;pointer-events:none;z-index:1000;animation:confettiCaer 3s ease-in forwards;}
+  @keyframes confettiCaer{0%{transform:translateY(0) rotate(0);opacity:1;}100%{transform:translateY(110vh) rotate(720deg);opacity:0;}}
+
+  footer{text-align:center;padding:2rem 1rem;font-size:.8rem;color:var(--dorado);letter-spacing:.1em;background:var(--beige);}
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.visible{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#fotos">📸 Fotos</a>
+  <a href="#musica">🎵 Música</a>
+  <a href="#memes">😂 Memes</a>
+  <a href="#videos">🎬 Videos</a>
+  <a href="#poemas">✍️ Para ti</a>
+</nav>
+
+<div class="petals" id="petals"></div>
+
+<section id="hero">
+  <div class="hero-flor">🌻</div>
+  <h1>Feliz Cumpleaños<br><span>Kath</span> 🎂</h1>
+  <p class="subtitulo">Hoy el universo celebra que tú existes</p>
+  <p class="fecha">✦ Un día muy especial para una persona muy especial ✦</p>
+  <span class="scroll-hint">↓ sigue bajando ↓</span>
+</section>
+
+<div id="zoro">
+  <div class="zoro-emoji">⚔️🌿</div>
+  <h2>"Nada me hará arrepentirme."</h2>
+  <p>— Como Zoro, que nunca se rinde ni pierde el norte,<br>tú tampoco te rindes nunca. Esa es tu mayor fortaleza, Kath.</p>
+</div>
+
+<section id="fotos">
+  <h2 class="section-title reveal">Nuestra <span>galería</span> 📸</h2>
+  <div class="divider reveal"></div>
+  <div class="galeria-grid reveal">
+
+    <div class="foto-card" onclick="abrirLightbox(this)">
+      <img src="FOTOS KATHY\87.jpeg" alt="foto 1"/>
+      <div class="foto-caption">✨ Momentos que debes guardar en el </DEl>corazón</div>
+    </div>
+    <div class="foto-card" onclick="abrirLightbox(this)">
+      <img src="FOTOS KATHY/098888.jpeg" alt="foto 2"/>
+      <div class="foto-caption">💛 Así te recuerdo siempre</div>
+    </div>
+    <div class="foto-card" onclick="abrirLightbox(this)">
+      <img src="FOTOS KATHY/52122.jpeg" alt="foto 3"/>
+      <div class="foto-caption">⭐ La mejor compañía</div>
+    </div>
+    <div class="foto-card" onclick="abrirLightbox(this)">
+      <img src="FOTOS KATHY/WhatsApp Image 2026-04-04 at 9.32.12 PM.jpeg" alt="foto 4"/>
+      <div class="foto-caption">⭐ La mejor compañía</div>
+    </div>
+    <div class="foto-card" onclick="abrirLightbox(this)">
+      <img src="FOTOS KATHY/7.jpeg" alt="foto 5"/>
+      <div class="foto-caption">🎶 Nuestra playlist en persona</div>
+    </div>
+    <div class="foto-card" onclick="abrirLightbox(this)">
+      <img src="FOTOS KATHY/099.jpeg" alt="foto 6"/>
+      <div class="foto-caption">🌻 Tú, eres la persona favorita de muchas personas</div>
+    </div>
+    <div class="foto-card" onclick="abrirLightbox(this)">
+      <img src="FOTOS KATHY/23.jpeg" alt="foto 7"/>
+      <div class="foto-caption">💫 Tú siempre seras así de linda</div>
+    </div>
+    <div class="foto-card" onclick="abrirLightbox(this)">
+      <img src="FOTOS KATHY/0444.jpeg" alt="foto 8"/>
+      <div class="foto-caption">🎂 ¡Felicidades, reina!</div>
+    </div>
+
+  </div>
+</section>
+
+<div id="lightbox">
+  <button id="lightbox-close" onclick="cerrarLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt=""/>
+  <p id="lightbox-caption"></p>
+</div>
+
+<section id="musica">
+  <h2 class="section-title reveal">Su música <span>favorita</span> 🎵</h2>
+  <div class="divider reveal"></div>
+  <div class="musica-grid reveal">
+    <div class="musica-card"><div class="nota">🌟</div><h3>Taylor Swift</h3><p>Enchanted (TV)</p><a href="https://open.spotify.com/track/3sW3oSbzsfecv9XoUdGs7h" target="_blank">🎧 Escuchar</a></div>
+    <div class="musica-card"><div class="nota">💫</div><h3>Ariana Grande</h3><p>supernatural</p><a href="https://open.spotify.com/track/6ckwLnqxeNqahEXMpxojrz" target="_blank">🎧 Escuchar</a></div>
+    <div class="musica-card"><div class="nota">💔</div><h3>Ariana Grande</h3><p>we can't be friends</p><a href="https://open.spotify.com/track/3nH6JdYvrM7cnLT7xMrEKX" target="_blank">🎧 Escuchar</a></div>
+    <div class="musica-card"><div class="nota">☕</div><h3>Sabrina Carpenter</h3><p>Good Luck, Babe! / Espresso</p><a href="https://open.spotify.com/artist/74KM79TiuVKeVCqs8QtB0B" target="_blank">🎧 Escuchar</a></div>
+    <div class="musica-card"><div class="nota">🎧</div><h3>The Chainsmokers</h3><p>Closer ft. Halsey</p><a href="https://open.spotify.com/track/7BKLCZ1jbUBVqRi2FVlTVw" target="_blank">🎧 Escuchar</a></div>
+    <div class="musica-card"><div class="nota">🌙</div><h3>Lana Del Rey</h3><p>Summertime Sadness</p><a href="https://open.spotify.com/track/6VlIBGpZOlOIABBPyWMeZJ" target="_blank">🎧 Escuchar</a></div>
+    <div class="musica-card"><div class="nota">🌾</div><h3>Lana Del Rey</h3><p>Cinnamon Girl</p><a href="https://open.spotify.com/track/2XThCkEJCzOhMQpqx0sJob" target="_blank">🎧 Escuchar</a></div>
+    <div class="musica-card"><div class="nota">💃</div><h3>Rihanna</h3><p>Only Girl / Kiss It Better</p><a href="https://open.spotify.com/artist/5pKCCKE2ajJHZ9KAiaK11H" target="_blank">🎧 Escuchar</a></div>
+    <div class="musica-card"><div class="nota">🌕</div><h3>Zoé</h3><p>Luna</p><a href="https://open.spotify.com/track/3MqNcX1bfvExPBUCRuPc1Z" target="_blank">🎧 Escuchar</a></div>
+    <div class="musica-card"><div class="nota">🎵</div><h3>Lady Antebellum</h3><p>Need You Now</p><a href="https://open.spotify.com/track/4GNcLFaDoRnFipPfzRClqY" target="_blank">🎧 Escuchar</a></div>
+    <div class="musica-card"><div class="nota">🔥</div><h3>Santos Bravos</h3><p>Velocidades & más</p><a href="https://open.spotify.com/artist/24Vjp1gvnNuNSWJ0vFMZ6G" target="_blank">🎧 Escuchar</a></div>
+    <div class="musica-card"><div class="nota">💛</div><h3>KATSEYE</h3><p>Gabriela</p><a href="https://open.spotify.com/track/1xOqGUkyxGQRdCvGpvWKmL" target="_blank">🎧 Escuchar</a></div>
+    <div class="musica-card"><div class="nota">👑</div><h3>Romeo Santos</h3><p>Imitadora</p><a href="https://open.spotify.com/track/6r46lnXFbE9fr2d3KNaGbe" target="_blank">🎧 Escuchar</a></div>
+    <div class="musica-card"><div class="nota">💋</div><h3>Baby Boy</h3><p>Bésame Fuerte</p><a href="https://open.spotify.com/track/0I3tEv6qkwWXWCYEmUg4IM" target="_blank">🎧 Escuchar</a></div>
+    <div class="musica-card"><div class="nota">🇵🇪</div><h3>Huayno Peruano</h3><p>Los mejores 💛</p><a href="https://open.spotify.com/playlist/2FaKEGi98esPut9htc9Vab" target="_blank">🎧 Escuchar</a></div>
+  </div>
+</section>
+
+<section id="memes">
+  <h2 class="section-title reveal">Memes <span>para reírte</span> 😂</h2>
+  <div class="divider reveal"></div>
+  <div class="memes-grid reveal">
+
+    <div class="meme-card">
+      <div class="meme-inner"><span>🦙</span><span class="meme-setup">Kath llegando a su cumpleaños:</span></div>
+      <div class="meme-texto">"Yo nominalmente bien, pero internamente escuchando Lana Del Rey en un cuarto oscuro con una vela." 🕯️</div>
+      <div class="meme-tag">🇵🇪 meme peruano certificado</div>
+    </div>
+
+    <div class="meme-card">
+      <div class="meme-inner"><span>🗡️</span><span class="meme-setup">Kath cuando dicen que Zoro se pierde:</span></div>
+      <div class="meme-texto">"Él no se pierde. Él toma rutas alternativas con determinación." 🧭✨</div>
+      <div class="meme-tag">⚔️ defensa de Zoro nivel experta</div>
+    </div>
+
+    <div class="meme-card">
+      <div class="meme-inner"><span>🎂</span><span class="meme-setup">Yo preparando esta página:</span></div>
+      <div class="meme-texto">"3 horas, 47 errores, un café frío. Pero tú vales cada intento." 💛💻</div>
+      <div class="meme-tag">hecho con amor y desesperación</div>
+    </div>
+
+    <div class="meme-card">
+      <div class="meme-inner"><span>🌍</span><span class="meme-setup">El universo el día que naciste:</span></div>
+      <div class="meme-texto">"Fan de One Piece, escucha Sabrina Carpenter y Huayno peruano. Combinación perfecta. ✅ Listo."</div>
+      <div class="meme-tag">combinación única en el mundo</div>
+    </div>
+
+    <div class="meme-card">
+      <div class="meme-inner"><span>🎵</span><span class="meme-setup">La playlist de Kath en modo aleatorio:</span></div>
+      <div class="meme-texto">"Ariana Grande → Huayno → Lana Del Rey → Santos Bravos." Nadie la entiende. Todos la aman. 🎶</div>
+      <div class="meme-tag">gusto musical sin fronteras</div>
+    </div>
+
+    <div class="meme-card">
+      <div class="meme-inner"><span>🌻</span><span class="meme-setup">Kath cumpliendo un año más:</span></div>
+      <div class="meme-texto">Como el girasol: siempre mirando al sol aunque esté nublado. Y cuando llueve, crece más bonita. 🌤️</div>
+      <div class="meme-tag">filosofía de cumpleaños</div>
+    </div>
+
+  </div>
+</section>
+
+<section id="poemas">
+  <h2 class="section-title reveal">Para ti, <span>Kath</span> ✍️</h2>
+  <div class="divider reveal"></div>
+  <div class="poemas-wrapper reveal">
+
+    <div class="poema-card">
+      <p>
+        Kath, hay personas que entran a tu vida<br>
+        y de repente todo tiene más sentido.<br>
+        Tú eres de esas. La que ríe fuerte,<br>
+        la que siente todo con intensidad,<br>
+        la que tiene el corazón<br>
+        tan grande como el Grand Line.
+      </p>
+      <div class="firma">— Con todo mi cariño 🌻</div>
+    </div>
+
+    <div class="poema-card">
+      <p>
+        Que este año que comienza<br>
+        sea tan épico como tu arco favorito,<br>
+        tan bonito como Lana Del Rey a medianoche,<br>
+        y tan lleno de alegría<br>
+        como tú me das a mí<br>
+        solo con existir.
+      </p>
+      <div class="firma">— Para siempre tu amiga ⭐</div>
+    </div>
+
+    <div class="poema-card">
+      <p>
+        La distancia no cambia nada, Kath.<br>
+        Hoy estoy lejos pero cerca<br>
+        en cada canción que te dedico,<br>
+        en cada foto que guardé,<br>
+        en cada "te extraño" que no siempre<br>
+        se dice pero se siente igual.
+      </p>
+      <div class="firma">— Tuya siempre 💛</div>
+    </div>
+
+    <div class="poema-card">
+      <p>
+        Como Zoro que nunca rompe una promesa,<br>
+        yo te prometo estar ahí<br>
+        en las buenas y en las noches<br>
+        de Lana Del Rey y cuarto oscuro.<br>
+        Feliz cumpleaños, Kath.<br>
+        Eres mi persona favorita.
+      </p>
+      <div class="firma">— Con amor, siempre ⚔️🌻</div>
+    </div>
+
+  </div>
+</section>
+
+<section id="mensaje">
+  <div class="gran-texto reveal">¡Feliz Cumpleaños Kath! 🎂🌻</div>
+  <p class="reveal">Eres única, increíble y mereces todo lo bueno que este año tiene para darte. Te quiero muchísimo, aunque la distancia diga lo contrario. 💛</p>
+  <button class="confetti-btn" onclick="lanzarConfetti()">🎉 ¡Celebremos juntas!</button>
+</section>
+
+<footer>
+  Hecho con 💛 especialmente para Kath · Un regalo de corazón desde lejos
+</footer>
+
+<script>
+  const symbols=['🌻','⭐','✨','🌼','💛','⚔️'];
+  const pc=document.getElementById('petals');
+  for(let i=0;i<22;i++){
+    const p=document.createElement('span');
+    p.className='petal';
+    p.textContent=symbols[i%symbols.length];
+    p.style.left=Math.random()*100+'vw';
+    p.style.animationDuration=(6+Math.random()*8)+'s';
+    p.style.animationDelay=(Math.random()*12)+'s';
+    p.style.fontSize=(.8+Math.random()*.8)+'rem';
+    pc.appendChild(p);
+  }
+
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+  function abrirLightbox(card){
+    const img=card.querySelector('img');
+    const caption=card.querySelector('.foto-caption')?.textContent||'';
+    document.getElementById('lightbox-img').src=img?img.src:'';
+    document.getElementById('lightbox-caption').textContent=caption;
+    document.getElementById('lightbox').classList.add('open');
+  }
+  function cerrarLightbox(){document.getElementById('lightbox').classList.remove('open');}
+  document.getElementById('lightbox').addEventListener('click',function(e){if(e.target===this)cerrarLightbox();});
+
+  function lanzarConfetti(){
+    const colors=['#f7d354','#c89a10','#ffe066','#fdf3c0','#b8860b','#fff9c4','#fff'];
+    for(let i=0;i<90;i++){
+      const c=document.createElement('div');
+      c.className='confetti-piece';
+      c.style.left=Math.random()*100+'vw';
+      c.style.background=colors[Math.floor(Math.random()*colors.length)];
+      c.style.width=(5+Math.random()*9)+'px';
+      c.style.height=(5+Math.random()*9)+'px';
+      c.style.borderRadius=Math.random()>.5?'50%':'2px';
+      c.style.animationDelay=(Math.random()*1.4)+'s';
+      c.style.animationDuration=(2.5+Math.random()*2)+'s';
+      document.body.appendChild(c);
+      setTimeout(()=>c.remove(),4800);
+    }
+  }
+</script>
+</body>
+</html>
